@@ -1,0 +1,55 @@
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Ubica tu Cancha</h1>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-sm-4">
+        <div class="card text-white bg-secondary mb-3" >
+            <div class="card-header">No. de Jugadores</div>
+            <div class="card-body">
+                <table *ngIf="canchas.length > 0"
+                    class="table mt-5  animated fadeIn faster animated fadeIn faster table table table-striped table-dark">
+                    <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Cancha</th>              
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let cancha of canchas; let i = index">
+                      <td>{{ i+1 }}</td>
+                      <td>{{ cancha.cancha }}</td>
+                      <td>
+                         <button  (click)="cargarPosMapa(cancha) "><mat-icon  class="cursor-croshair">visibility</mat-icon></button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-8">
+      <div class="card text-white bg-secondary mb-3" >
+        <div class="card-header">Google Mpas</div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="form-group">
+                    <label>Dirección </label>
+                    <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Ingrese la direccion a buscar" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+                    </div>
+                
+                    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                        (dragEnd)="markerDragEnd($event)"></agm-marker>
+                    </agm-map>
+                
+                    <div>Latitude: {{latitude}}</div>
+                    <div>Longitude: {{longitude}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

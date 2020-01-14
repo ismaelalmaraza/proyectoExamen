@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { EstadisticasService } from '../../services/estadisticas.service'
+import { EstadisticasService } from '../../services/estadisticas/estadisticas.service'
 import { EstadisticasModel } from '../../models/estadisticas.model';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
@@ -25,16 +25,10 @@ export class GraphicsComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
-    this.cargarData();
-
-    
+    this.cargarData(); 
   }
 
-
-  ///////////////////////////////////////////////////////////////////////////////////////////
-  //----------------------Funciones-------------------------------//
+  //----------------------Cargar Datos-------------------------------//
   cargarData()
   {
 
@@ -46,6 +40,7 @@ export class GraphicsComponent implements OnInit {
         this.creaDataLines(this.estadisticas);
       });
   }
+  
   creaDataLines(estadisticas : EstadisticasModel[]){
     let faltas: any[] = [];
     let amonestados: any[] = [];
@@ -103,6 +98,8 @@ export class GraphicsComponent implements OnInit {
    this.creaGraficaPie(this.dataPie)
   }
 
+  
+  //----------------------Crear graficas-------------------------------//
   crearGraficaLineas(juegos,faltas,expulsados,amonestados)
   {
     this.highchartsLineas = Highcharts;
@@ -140,9 +137,7 @@ export class GraphicsComponent implements OnInit {
          data: expulsados
       }]
    };
-}
-  
-
+  }
   crearGraficaBars(categorias,gf,gc){
     this.highchartsBars = Highcharts;
     this.chartOptionsBars = {   

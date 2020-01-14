@@ -24,6 +24,7 @@ import { GraphicsComponent } from './pages/graphics/graphics.component';
 
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { AgmCoreModule } from '@agm/core';
+import { MapsComponent } from './pages/maps/maps.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -38,7 +39,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavbarComponent,
     SidebarComponent,
     GraphicsComponent,
-    HighchartsChartComponent
+    HighchartsChartComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,

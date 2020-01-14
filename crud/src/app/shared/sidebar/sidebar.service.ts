@@ -26,10 +26,11 @@ export class SidebarService {
       ruta:'/graficas'
     },
     {
-      title: 'Maps',
+      title: 'Mapas',
       icon: 'fa fa-globe',
       active: false,
-      type: 'simple'
+      type: 'simple',
+      ruta:'/maps'
     },
     {
       title: 'Extra',

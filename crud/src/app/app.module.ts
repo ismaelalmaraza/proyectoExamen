@@ -22,6 +22,7 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { GraphicsComponent } from './pages/graphics/graphics.component';
 
+import { HighchartsChartComponent } from 'highcharts-angular';
 import { AgmCoreModule } from '@agm/core';
 
 
@@ -37,6 +38,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavbarComponent,
     SidebarComponent,
     GraphicsComponent,
+    HighchartsChartComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,125 @@
+
+<h1>Jugadores del Club</h1>
+<hr>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-white bg-primary mb-3" >
+      <div class="card-header">No. de Jugadores</div>
+      <div class="card-body">
+        <h3 class="card-text text-center display-1" te>{{totalJugadores}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card text-white bg-success mb-3" >
+      <div class="card-header">Titulares</div>
+      <div class="card-body">
+        <h3 class="card-text text-center display-1" te>{{titulares}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card text-white bg-danger mb-3">
+      <div class="card-header">Banca</div>
+      <div class="card-body">
+        <h3 class="card-text text-center display-1" te>{{banca}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <table *ngIf="!cargando && jugadores.length > 0"
+      class="table mt-5  animated fadeIn faster animated fadeIn faster table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Posición</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let posicion of posiciones; let i = index">
+
+        <td>{{ i+1 }}</td>
+        <td>{{ posicion.posicion }}</td>
+
+      </tr>
+      </tbody>
+    </table> 
+  </div>
+
+
+
+  <div class="col-sm-8">
+
+    <table *ngIf="!cargando && jugadores.length > 0"
+      class="table mt-5  animated fadeIn faster animated fadeIn faster table table table-striped table-dark">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Status</th>
+        <th scope="col">
+          <button routerLink="/jugador/nuevo"
+            class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Agregar
+          </button>
+        </th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let jugador of jugadores; let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ jugador.nombre }}</td>
+        <td>{{ jugador.apellido }}</td>
+        <td>{{ jugador.edad }}</td>
+
+        <td>
+          
+          <label *ngIf="jugador.titular" class="badge badge-success">Titular</label>
+          <label *ngIf="!jugador.titular" class="badge badge-danger">Banca</label>
+
+        </td>
+        <td>
+
+          <a ref="#" [routerLink]="['/jugador', jugador.id ] " ><mat-icon  class="cursor-croshair">edit</mat-icon></a>
+          <a ref="#" routerLink ="" (click)="borrarJugador( jugador, i ) ">    <mat-icon  class="cursor-croshair">delete</mat-icon></a>
+          <a ref="#" routerLink ="" (click)="openDialog(jugador) "><mat-icon  class="cursor-croshair">visibility</mat-icon></a>
+          
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<div *ngIf="!cargando && jugadores.length === 0"
+    class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" 
+  class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
+

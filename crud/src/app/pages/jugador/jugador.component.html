@@ -1,0 +1,124 @@
+
+<h1><small>Datos del Jugador</small> </h1>
+<hr>
+
+
+<div class="row text-right">
+  <div class="col">
+    <button class="btn btn-danger"
+            routerLink="/jugadores">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+
+    <form (ngSubmit)="guardar( f )"
+          #f="ngForm">
+
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Firebase ID"
+               [(ngModel)]="jugador.id"
+               name="id"
+               disabled="disabled">
+        <small class="form-text text-muted">Este campo es autogenerado</small>
+      </div>
+
+
+      <div class="form-group">
+          <label>*Nombre</label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Nombre del jugador"
+                 [(ngModel)]="jugador.nombre"
+                 name="nombre"
+                 required>
+      </div>
+
+      <div class="form-group">
+          <label>*Apellido</label>
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="jugador.apellido"
+                 name="apellido"
+                 placeholder="Apellido del Jugador"
+                 required>
+      </div>
+
+      <div class="form-group">
+        <label>*Edad</label>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="jugador.edad"
+               name="edad"
+               placeholder="Edad del Jugador"
+               required>
+    </div>
+
+      <div class="form-group">
+          <label>*Posición</label>
+          <input type="string"
+                class="form-control"
+                [(ngModel)]="jugador.posicion"
+                name="posicion"
+                placeholder="Posición en el campo"
+                required>
+      </div>
+
+      <div class="form-group">
+        <label>*Descripción</label>
+        <input type="textarea"
+              class="form-control"
+              [(ngModel)]="jugador.descripcion"
+              name="descripcion"
+              placeholder="Describa sus habilidades"
+              required>
+      </div>
+
+      <div class="form-group">
+        <label>Estado</label>
+        <br>
+
+        <button *ngIf="jugador.titular" 
+                (click)="jugador.titular = false"
+                class="btn btn-outline-success w-100" type="button">
+          <i class="fa fa-smile-wink"></i>
+          Titular
+        </button>
+
+        <button *ngIf="!jugador.titular" 
+                (click)="jugador.titular = true"
+                class="btn btn-outline-danger w-100" type="button">
+            <i class="fa fa-dizzy"></i>
+            Banca
+        </button>
+
+      </div>
+
+
+
+      <hr>
+      <div class="form-group text-center">
+        <button type="submit"
+                class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
+
+

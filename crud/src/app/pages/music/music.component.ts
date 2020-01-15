@@ -15,11 +15,13 @@ export class MusicComponent  {
   mensajeError: string;
 
   constructor( private spotify: MusicService ) {
-
     this.loading = true;
     this.error = false;
+    this.spotify.getToken().subscribe(
+      data => { 
+        console.log(data['token_type'] + " " + data['access_token']);
 
-    this.spotify.getNewReleases()
+        this.spotify.getNewReleases(data['token_type'] + " " + data['access_token'])
         .subscribe( (data: any) => {
           this.nuevasCanciones = data;
           this.loading = false;
@@ -31,9 +33,8 @@ export class MusicComponent  {
           this.mensajeError = errorServicio.error.error.message;
 
         });
-
+    },
+      error => { console.log(error);
+    } )
   }
-
-
-
 }

@@ -5,7 +5,7 @@ import { MusicService } from '../../services/music/music.service';
 @Component({
   selector: 'app-artista',
   templateUrl: './artista.component.html',
-  styles: []
+  styles: ['./artista.component.css']
 })
 export class ArtistaComponent {
 
@@ -21,19 +21,27 @@ export class ArtistaComponent {
 
     this.router.params.subscribe( params => {
 
-      this.getArtista( params['id'] );
-      this.getTopTracks( params['id'] );
+      this.spotify.getToken().subscribe(
+        data => { 
+          console.log(data['token_type'] + " " + data['access_token']);
+          this.getArtista( params['id'] ,data['token_type'] + " " + data['access_token']);
+          this.getTopTracks( params['id'],data['token_type'] + " " + data['access_token'] );
+  
+      },
+        error => { console.log(error);
+      } )
+
 
     });
 
   }
 
 
-  getArtista( id: string ) {
+  getArtista( id: string ,token : string) {
 
     this.loadingArtist = true;
 
-    this.spotify.getArtista( id )
+    this.spotify.getArtista( id ,token)
           .subscribe( artista => {
             console.log(artista);
             this.artista = artista;
@@ -43,9 +51,9 @@ export class ArtistaComponent {
 
   }
 
-  getTopTracks( id: string ) {
+  getTopTracks( id: string ,token : string) {
 
-    this.spotify.getTopTracks( id )
+    this.spotify.getTopTracks( id,token )
             .subscribe( topTracks => {
               console.log(topTracks);
               this.topTracks = topTracks;

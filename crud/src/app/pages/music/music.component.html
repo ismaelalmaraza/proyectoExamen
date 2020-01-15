@@ -1,0 +1,21 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+    <h3>Error</h3>
+    <p>
+        {{ mensajeError }}
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 mt-5" >
+        <div class="card bg-light mb-3" >
+            <div class="card-header" style="color: black !important" >Nuevos lanzamientos de Spotify</div>
+            <div class="card-body">
+
+                <app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
+            </div>
+        </div>
+    </div>
+</div>
+

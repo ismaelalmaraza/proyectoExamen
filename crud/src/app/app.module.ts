@@ -25,6 +25,14 @@ import { GraphicsComponent } from './pages/graphics/graphics.component';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { AgmCoreModule } from '@agm/core';
 import { MapsComponent } from './pages/maps/maps.component';
+import { MusicComponent } from './pages/music/music.component';
+import { ArtistaComponent } from './pages/artista/artista.component';
+
+import { TarjetasComponent } from './pages/tarjetas/tarjetas.component';
+import { LoadingComponent } from './shared/loading/loading.component';
+
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -36,11 +44,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     JugadorComponent,
     JugadoresComponent,
+    ArtistaComponent,
     NavbarComponent,
     SidebarComponent,
     GraphicsComponent,
     HighchartsChartComponent,
-    MapsComponent
+    MapsComponent,
+    MusicComponent,    
+    TarjetasComponent,
+    LoadingComponent,
+    DomseguroPipe,
+    NoimagePipe
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,8 @@ export class SidebarService {
       title: 'Musica',
       icon: 'fa fa-music',
       active: false,
-      type: 'simple'
+      type: 'simple',
+      ruta:'/music'
     }
   ];
   constructor() { }
